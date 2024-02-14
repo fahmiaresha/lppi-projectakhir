@@ -42,6 +42,7 @@
                         <th>Total</th>
                         <th>Status</th>
                         <th>Tanggal</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -65,6 +66,96 @@
                             @endif
                         </td>
                         <td>{{ $order->order_date }}</td>
+                        <td>
+                            <button type="button" class="btn btn-outline-info mb-1 ml-2" data-toggle="modal" data-target="#modaldetail{{$order->order_id}}">
+                                <i class="fa fa-info-circle mr-1"></i>Detail Pesanan
+                            </button>
+
+                            <div class="modal fade" id="modaldetail{{$order->order_id}}" tabindex="-1" role="dialog" aria-hidden="true">
+                                <div class="modal-dialog modal-lg" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Detail Pesanan</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <i class="ti-close"></i>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+
+                                            <div class="row">
+
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label for="exampleFormControlTextarea1"><strong>No. Invoice</strong></label>
+                                                        <div class="coba">
+                                                            {{$order->invoice_id}}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label for="exampleFormControlTextarea1"><strong>Tanggal</strong></label>
+                                                        <div class="coba">
+                                                            {{date('d-m-Y', strtotime($order->order_date)) }}
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label for="exampleFormControlTextarea1"><strong>Kasir</strong></label>
+                                                        <div class="coba">
+                                                            @foreach($user as $u)
+                                                            @if($u->id== $order->user_id)
+                                                            {{$u->name}}
+                                                            @endif
+                                                            @endforeach
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <br>
+                                            <label for="exampleFormControlTextarea1"><strong>Daftar Pembelian</strong></label>
+                                            <div class="table-responsive mt-2">
+                                                <table class="table table-active table-hover">
+                                                    <thead>
+                                                        <tr>
+                                                            <center>
+                                                                <th>#</th>
+                                                                <th>Nama</th>
+                                                                <th>Harga</th>
+                                                                <th>Jumlah</th>
+                                                                <th>Total</th>
+                                                            </center>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @php $total = 0; $counter = 1;  @endphp
+                                                        @foreach($order_item as $item)
+                                                        @if($item->order_id == $order->order_id)
+                                                        <tr>
+                                                            <td>{{ $counter++ }}</td>
+                                                            <td>{{ $item->product_name }}</td>
+                                                            <td>Rp. {{ number_format($item->product_price) }}</td>
+                                                            <td>{{ $item->qty }}</td>
+                                                            <td>Rp. {{ number_format($item->subtotal) }}</td>
+                                                        </tr>
+                                                        @php $total += $item->subtotal; @endphp
+                                                        @endif
+                                                        @endforeach
+                                                        <tr>
+                                                            <td colspan="4" class="text-right"><strong>Total:</strong></td>
+                                                            <td>Rp. {{ number_format($total) }}</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
                     </tr>
                     @endforeach
                 </tbody>

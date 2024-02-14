@@ -25,7 +25,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="d-flex justify-content-between">
-                        <h6 class="card-title">Rp. 00 </h6>
+                        <h6 class="card-title">Rp. {{number_format($totalOmset)}} </h6>
                     </div>
                     <div class="coba" style="margin-top:-10px;">Jumlah Omset</div>
                 </div>
@@ -39,9 +39,9 @@
             <div class="card">
                 <div class="card-body">
                     <div class="d-flex justify-content-between">
-                        <h6 class="card-title"> 124 </h6>
+                        <h6 class="card-title"> {{$totalAdmin}} </h6>
                     </div>
-                    <div class="coba" style="margin-top:-10px;">Jumlah Customer</div>
+                    <div class="coba" style="margin-top:-10px;">Jumlah User</div>
                 </div>
             </div>
         </a>
@@ -52,7 +52,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="d-flex justify-content-between">
-                        <h6 class="card-title"> 123 </h6>
+                        <h6 class="card-title"> {{$totalCategories}} </h6>
                     </div>
                     <div class="coba" style="margin-top:-10px;">Jumlah Kategori Produk</div>
                 </div>
@@ -65,7 +65,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="d-flex justify-content-between">
-                        <h6 class="card-title"> 123 </h6>
+                        <h6 class="card-title"> {{$totalProducts}} </h6>
                     </div>
                     <div class="coba" style="margin-top:-10px;">Jumlah Produk</div>
                 </div>
@@ -80,7 +80,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="d-flex justify-content-between">
-                        <h6 class="card-title">Rp. 00 </h6>
+                        <h6 class="card-title">{{$newOrders}} </h6>
                     </div>
                     <div class="coba" style="margin-top:-10px;">Jumlah Orderan Baru</div>
                 </div>
@@ -94,7 +94,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="d-flex justify-content-between">
-                        <h6 class="card-title"> 124 </h6>
+                        <h6 class="card-title"> {{$processingOrders}} </h6>
                     </div>
                     <div class="coba" style="margin-top:-10px;">Jumlah Order Diproses</div>
                 </div>
@@ -107,7 +107,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="d-flex justify-content-between">
-                        <h6 class="card-title"> 123 </h6>
+                        <h6 class="card-title"> {{$shippedOrders}} </h6>
                     </div>
                     <div class="coba" style="margin-top:-10px;">Jumlah Orderan Dikirim</div>
                 </div>
@@ -120,7 +120,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="d-flex justify-content-between">
-                        <h6 class="card-title"> 123 </h6>
+                        <h6 class="card-title"> {{$completedOrders}} </h6>
                     </div>
                     <div class="coba" style="margin-top:-10px;">Jumlah Orderan Selesai</div>
                 </div>
@@ -143,7 +143,7 @@
                                 <h5>Hari</h5>
                                 <div>Total penjualan</div>
                             </div>
-                            <h3 class="text-warning mb-0">Rp. 123</h3>
+                            <h3 class="text-warning mb-0">Rp. {{number_format($dailySales)}}</h3>
                         </div>
                         <div class="list-group-item d-flex justify-content-between align-items-center px-0">
                             <div>
@@ -151,7 +151,7 @@
                                 <div>Total penjualan</div>
                             </div>
                             <div>
-                                <h3 class="text-info mb-0">Rp. 124</h3>
+                                <h3 class="text-info mb-0">Rp. {{number_format($monthlySales)}}</h3>
                             </div>
                         </div>
                         <div class="list-group-item d-flex justify-content-between align-items-center px-0">
@@ -160,7 +160,7 @@
                                 <div>Total penjualan</div>
                             </div>
                             <div>
-                                <h3 class="text-success mb-0">Rp. 125</h3>
+                                <h3 class="text-success mb-0">Rp. {{number_format($yearlySales)}}</h3>
                             </div>
                         </div>
 
@@ -183,7 +183,7 @@
                                 <h5>Hari</h5>
                                 <div>Total penjualan</div>
                             </div>
-                            <h3 class="text-warning mb-0">123</h3>
+                            <h3 class="text-warning mb-0">{{$dailySoldProducts}}</h3>
                         </div>
                         <div class="list-group-item d-flex justify-content-between align-items-center px-0">
                             <div>
@@ -191,7 +191,7 @@
                                 <div>Total penjualan</div>
                             </div>
                             <div>
-                                <h3 class="text-info mb-0">123</h3>
+                                <h3 class="text-info mb-0">{{$monthlySoldProducts}}</h3>
                             </div>
                         </div>
                         <div class="list-group-item d-flex justify-content-between align-items-center px-0">
@@ -200,7 +200,7 @@
                                 <div>Total penjualan</div>
                             </div>
                             <div>
-                                <h3 class="text-success mb-0">1234</h3>
+                                <h3 class="text-success mb-0">{{$yearlySoldProducts}}</h3>
                             </div>
                         </div>
                     </div>
